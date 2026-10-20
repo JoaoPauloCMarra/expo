@@ -11,6 +11,7 @@ import expo.modules.notifications.notifications.interfaces.NotificationListener
 import expo.modules.notifications.notifications.model.Notification
 import expo.modules.notifications.notifications.model.NotificationBehaviorRecord
 import expo.modules.notifications.notifications.model.RemoteNotificationContent
+import java.util.concurrent.ConcurrentHashMap
 
 /**
  * [NotificationListener] responsible for managing app's reaction to incoming
@@ -32,7 +33,7 @@ open class NotificationsHandler : Module(), NotificationListener {
    */
   private lateinit var handler: Handler
 
-  private val tasksMap = mutableMapOf<String, SingleNotificationHandlerTask>()
+  private val tasksMap = ConcurrentHashMap<String, SingleNotificationHandlerTask>()
 
   override fun definition() = ModuleDefinition {
     Name("ExpoNotificationsHandlerModule")
